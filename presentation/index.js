@@ -9,6 +9,7 @@ import {
   Heading,
   ListItem,
   List,
+  S,
   Layout,
   Fill,
   Fit,
@@ -79,11 +80,17 @@ const theme = createTheme({
   primary: 'white',
   secondary: '#1F2022',
   tertiary: '#03A9FC',
-  quartenary: '#CECECE'
+  quartenary: '#CECECE',
+  alert: '#f30'
 }, {
-  primary: 'Montserrat',
-  secondary: 'Helvetica'
-});
+    primary: 'Montserrat',
+    secondary: 'Helvetica'
+  });
+
+
+const Divider = () => (
+  <div style={{ borderBottom: '2px solid #e7e7e7', marginTop: 15, marginBottom: 15 }} />
+)
 
 export default class Presentation extends React.Component {
   render() {
@@ -121,14 +128,17 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="tertiary"> {/* Anatomy 1 */}
           <Heading size={6} textColor="quartenary" caps>Anatomy of a request</Heading>
-          <List>
-            <ListItem>You go to your browser</ListItem>
-            <ListItem>You type in an address</ListItem>
-            <ListItem>The internet does magic and converts the name you typed in into a number</ListItem>
-            <ListItem>Your request arrives at the server</ListItem>
-            <ListItem>The server processes your request and returns the page</ListItem>
-            <ListItem>You proceed to browse facebook.</ListItem>
-          </List>
+          <Appear fid="1">
+            <List>
+              <ListItem textSize="1.5rem">You go to your browser</ListItem>
+              <ListItem textSize="1.5rem">You type in an address</ListItem>
+              <ListItem textSize="1.5rem">The browser creates a request which goes to a Domain Name Server</ListItem>
+              <ListItem textSize="1.5rem">The Domain name server converts your requested url into a Number (IP Address)</ListItem>
+              <ListItem textSize="1.5rem">Your request arrives at the server</ListItem>
+              <ListItem textSize="1.5rem">The server processes your request and returns the page</ListItem>
+              <ListItem textSize="1.5rem">You proceed to browse facebook.</ListItem>
+            </List>
+          </Appear>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="tertiary"> {/* Anatomy 2 */}
           <Heading size={6} textColor="quartenary" caps>Anatomy of a Request</Heading>
@@ -136,25 +146,25 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Server Role */}
           <Heading fit caps>On the server</Heading>
-          <Appear fid="1">
-            <List>
-              <Appear fid="2">
-                <ListItem textSize="1.5rem">
-                  Firstly Check to make sure the page requested exist and is defined in the application.
-                </ListItem>
-              </Appear>
-              <Appear fid="3">
-                <ListItem textSize="1.5rem">
-                  Secondly Fetch any data the next page might need
-                </ListItem>
-              </Appear>
-              <Appear fid="4">
-                <ListItem textSize="1.5rem">
-                  Thirdly to turn that data back into something the browser can read. ( A string of html)
-                </ListItem>
-              </Appear>
-            </List>
-          </Appear>
+            <Text caps textColor="primary">At this point there are 2 things that can happen.
+            Based on the type of server / application you are dealing with.</Text>
+        </Slide>
+        <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Dynamic server examples */}
+          <Heading caps>Dynamic Web Server Examples</Heading>
+          <Text caps textColor='primary'>Saint Student</Text>
+          <Text caps textColor='primary'>Rest API</Text>
+        </Slide>
+        <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Static Web Server */}
+          <Heading caps>Static Web Server</Heading>
+          <Text fit textColor='primary'>Is only concerned with serving a folder of files to the internet aka a Virtual Directory</Text>
+          <Divider />
+          <Text fit textColor='primary'>There is a convention in HTTP protocol
+          that says if an <S type='underline'>index.html</S> file exist in a static virtual directory you can serve that as the root of the directory.</Text>
+        </Slide>
+        <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Static Server Examples */}
+          <Heading caps>Static Examples</Heading>
+          <Divider />
+          <Text fit textColor='primary'>As far as the Datacheck server is concerned Datacheck is <Text caps textColor='alert'>STATIC</Text></Text>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="tertiary"> {/* On the browser */}
           <Heading size={6} textColor="quartenary" caps>Once the browser has control back</Heading>
@@ -174,6 +184,18 @@ export default class Presentation extends React.Component {
               <ListItem>Data Fetching</ListItem>
               <ListItem>Rich User Experience</ListItem>
             </List>
+          </Appear>
+        </Slide>
+        <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* What makes a web app */}
+          <Heading caps fit textColor="tertiary">
+            Broken Down
+          </Heading>
+          <Divider />
+          <Appear fid='1'>
+            <Text caps textColor='primary' fit>A web application is <S type='underline'>one or many user interfaces arranged by function</S></Text>
+          </Appear>
+          <Appear fid='2'>
+            <Text caps textColor='alert'>Make A complex task <S type='underline'>simple...</S></Text>
           </Appear>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Routing Overview */}
@@ -219,7 +241,7 @@ export default class Presentation extends React.Component {
           <Heading size={1} caps fit>
             Bad User Experience
           </Heading>
-          <Image src={images.staticSiteFormSubmittal} width={600}/>
+          <Image src={images.staticSiteFormSubmittal} width={600} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Javascript Form Submit */}
           <Heading size={1} caps fit>
@@ -231,7 +253,7 @@ export default class Presentation extends React.Component {
           <Heading size={1} caps fit>
             Mind Blown
           </Heading>
-          <Image src={images.questions} width={400}/>
+          <Image src={images.questions} width={400} />
           <Heading size={1} textColor="quartenary" caps fit>
             Questions ?
           </Heading>
@@ -373,6 +395,15 @@ export default class Presentation extends React.Component {
             </Fill>
           </Layout>
         </Slide>
+        <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Questions */}
+          <Heading size={1} caps fit>
+            Mind Blown
+          </Heading>
+          <Image src={images.questions} width={400} />
+          <Heading size={1} textColor="quartenary" caps fit>
+            Questions ?
+          </Heading>
+        </Slide>
         {/* Javascript on the server */}
         <Slide transition={['zoom']} bgColor="#222"> {/* Intro Header */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
@@ -385,7 +416,7 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={['fade']} bgColor="#222"> {/* NodeJS Intro */}
           <Image width={200} src={images.nodeJS} />
-          <Text textColor='primary' fit>Node.js is an open-source, cross-platform JavaScript runtime environment
+          <Text textColor="primary" fit>Node.js is an open-source, cross-platform JavaScript runtime environment
                 for developing a diverse variety of server tools and applications.
                 Although Node.js is not a JavaScript framework, many of
                 its basic modules are written in JavaScript, and developers can write
@@ -425,10 +456,10 @@ export default class Presentation extends React.Component {
           <Heading fit caps>Whose Using Node</Heading>
           <Image src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" width={100} /><br />
           <Image src="https://upload.wikimedia.org/wikipedia/commons/7/77/The_New_York_Times_logo.png" width={200} /><br />
-          <Image src="https://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2016/06/Netflix-Older-Logo.png" width={200}/><br />
+          <Image src="https://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2016/06/Netflix-Older-Logo.png" width={200} /><br />
           <Image src={images.linkedin} width={200} />
-          <Appear fid='1'>
-            <Text fit textColor='secondary' >GoDaddy, Groupon, IBM, Microsoft, SAP, Walmart, Yahoo</Text>
+          <Appear fid="1">
+            <Text fit textColor="secondary" >GoDaddy, Groupon, IBM, Microsoft, SAP, Walmart, Yahoo</Text>
           </Appear>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="primary">{/* Serverside Breakdown */}
@@ -482,35 +513,44 @@ export default class Presentation extends React.Component {
             <Text fit textColor="quartenary">Applications can be a hybrid of both. (Universal Javascript Application)</Text>
           </Appear>
         </Slide>
+        <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Questions */}
+          <Heading size={1} caps fit>
+            Mind Blown
+          </Heading>
+          <Image src={images.questions} width={400} />
+          <Heading size={1} textColor="quartenary" caps fit>
+            Questions ?
+          </Heading>
+        </Slide>
         {/* Javascript in the build toolchain */}
         <Slide transition={['zoom']} bgColor="secondary"> {/* Build Intro */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Javascript in the build toolchain
           </Heading>
-          <Image src={images.webpack} width={300}/>
-          <Image src={images.gulp} width={100}/>
-          <Image src={images.grunt} width={100}/>
-          <Image src={images.babel} width={300}/>
+          <Image src={images.webpack} width={300} />
+          <Image src={images.gulp} width={100} />
+          <Image src={images.grunt} width={100} />
+          <Image src={images.babel} width={300} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Build List */}
           <List>
-            <ListItem textSize='1.4rem' textColor='primary' >
+            <ListItem textSize="1.4rem" textColor="primary" >
               Because nodeJS is javascript and runs on the server/desktop its a great candidate for developer tools.
             </ListItem>
-            <ListItem textSize='1.4rem' textColor='primary' >
+            <ListItem textSize="1.4rem" textColor="primary" >
               It also has a great way to manage application dependencies built in.
             </ListItem>
-            <ListItem textSize='1.4rem' textColor='primary' >
+            <ListItem textSize="1.4rem" textColor="primary" >
               No matter the type a lot of modern web apps depend on the NODE ecosystem to get there dependenies and handle the build/compile process.
             </ListItem>
           </List>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* JS dev to prod*/}
-          <Heading fit caps textColor='quartenary'>What needs to happen to ship our JS to Production.</Heading>
+          <Heading fit caps textColor="quartenary">What needs to happen to ship our JS to Production.</Heading>
           <List>
-            <ListItem textSize='1.2rem' textColor='primary' >We need to make our code as small as possible because it has to go over the interwebz. (Minification)</ListItem>
-            <ListItem textSize='1.2rem' textColor='primary' >We need to make our code work in a range of browsers despite there inconsistencies (Polyfilling)</ListItem>
-            <ListItem textSize='1.2rem' textColor='primary' >
+            <ListItem textSize="1.2rem" textColor="primary" >We need to make our code as small as possible because it has to go over the interwebz. (Minification)</ListItem>
+            <ListItem textSize="1.2rem" textColor="primary" >We need to make our code work in a range of browsers despite there inconsistencies (Polyfilling)</ListItem>
+            <ListItem textSize="1.2rem" textColor="primary" >
               We need to split our code into multiple files during development so its easy to reason about.
               But we need to ship as few files as possible</ListItem>
           </List>
@@ -536,70 +576,70 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* JS libraries and packages */}
-          <Heading fit caps textColor='tertiary'>Lets talk about Javascript Libraries and packages.</Heading>
-          <Text fit caps textColor='primary'>Using the tools we just talked about we can define dependencies in our
+          <Heading fit caps textColor="tertiary">Lets talk about Javascript Libraries and packages.</Heading>
+          <Text fit caps textColor="primary">Using the tools we just talked about we can define dependencies in our
           application that allow us to solve problems faster and more efficiently.</Text>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* React */}
-          <Heading fit caps textColor='tertiary'>React</Heading>
-          <Text fit caps textColor='primary'>A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES</Text>
+          <Heading fit caps textColor="tertiary">React</Heading>
+          <Text fit caps textColor="primary">A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES</Text>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* React Example */}
-          <Heading fit caps textColor='tertiary'>Simple React Example</Heading>
+          <Heading fit caps textColor="tertiary">Simple React Example</Heading>
           <CodePane
             lang="jsx"
-            source={require("raw-loader!../assets/react_app.example")}
+            source={require('raw-loader!../assets/react_app.example')}
             margin="20px auto"
           />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Advanced Component */}
-          <Heading fit caps textColor='tertiary'>Advanced Component</Heading>
+          <Heading fit caps textColor="tertiary">Advanced Component</Heading>
           <CodePane
             lang="jsx"
-            source={require("raw-loader!../assets/complex_react.example")}
+            source={require('raw-loader!../assets/complex_react.example')}
             margin="20px auto"
           />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Using Advanced */}
-          <Heading fit caps textColor='tertiary'>Using the component</Heading>
+          <Heading fit caps textColor="tertiary">Using the component</Heading>
           <CodePane
             lang="jsx"
-            source={require("raw-loader!../assets/using_component.example")}
+            source={require('raw-loader!../assets/using_component.example')}
             margin="20px auto"
           />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* React Router*/}
-          <Heading fit caps textColor='tertiary'>React Router</Heading>
-          <Text fit caps textColor='primary'>You guessed it a router for react.</Text>
+          <Heading fit caps textColor="tertiary">React Router</Heading>
+          <Text fit caps textColor="primary">You guessed it a router for react.</Text>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* React Router Example */}
-          <Heading fit caps textColor='tertiary'>Simple React Router Example</Heading>
+          <Heading fit caps textColor="tertiary">Simple React Router Example</Heading>
           <CodePane
             lang="jsx"
-            source={require("raw-loader!../assets/react_router.example")}
+            source={require('raw-loader!../assets/react_router.example')}
             margin="20px auto"
           />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Redux */}
-          <Heading fit caps textColor='tertiary'>Redux</Heading>
-          <Text fit caps textColor='primary'>Sane State & data management for React</Text>
-          <Text fit caps textColor='primary'>We need a way to manage all the data we get for our application</Text>
-          <Text fit caps textColor='primary'>We might need this data in multiple components accross the app.</Text>
+          <Heading fit caps textColor="tertiary">Redux</Heading>
+          <Text fit caps textColor="primary">Sane State & data management for React</Text>
+          <Text fit caps textColor="primary">We need a way to manage all the data we get for our application</Text>
+          <Text fit caps textColor="primary">We might need this data in multiple components accross the app.</Text>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Redux Example */}
-          <Heading fit caps textColor='tertiary'>Redux state example from datacheck.</Heading>
+          <Heading fit caps textColor="tertiary">Redux state example from datacheck.</Heading>
           <Image src={images.reduxExample} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Error handling */}
           <Heading size={1} fit caps lineHeight={1} textColor="tertiary">
-            Error handling 
+            Error handling
           </Heading>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Error handling */}
           <Heading size={1} fit caps lineHeight={1} textColor="tertiary">
             Sentry
           </Heading>
-          <Text textColor='primary'>Our goal is to catch errors across all our services
+          <Text textColor="primary">Our goal is to catch errors across all our services
           and have one place where we can view and track them</Text>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Sentry example 1 */}
@@ -629,61 +669,70 @@ export default class Presentation extends React.Component {
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Debugging web applications Using chrome dev tools.
           </Heading>
-          <Text fit textColor='tertiary'>These examples will use chrome dev tools</Text>
+          <Text fit textColor="tertiary">These examples will use chrome dev tools</Text>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Accessing the devtools */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Accessing the dev tools.
           </Heading>
-          <Image src={images.accessDevtools} width={950}/>
+          <Image src={images.accessDevtools} width={950} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Elements Pane */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Elements Pane
           </Heading>
-          <Image src={images.devtoolsElements} width={950}/>
+          <Image src={images.devtoolsElements} width={950} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Console Pane */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Console Pane
           </Heading>
-          <Image src={images.devtoolsConsole} width={950}/>
+          <Image src={images.devtoolsConsole} width={950} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* App Pane */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Application Pane
           </Heading>
-          <Image src={images.devtoolsAppPane} width={950}/>
+          <Image src={images.devtoolsAppPane} width={950} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Network Pane 1 */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Network Pane
           </Heading>
-          <Image src={images.devtoolsNetwork} width={950}/>
+          <Image src={images.devtoolsNetwork} width={950} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Network Pane 2 */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Network Detail Pane
           </Heading>
-          <Image src={images.devtoolsNetworkDetail} width={950}/>
+          <Image src={images.devtoolsNetworkDetail} width={950} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Network Pane 3 */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Network Headers Pane
           </Heading>
-          <Image src={images.devtoolsNetworkReqHeaders} width={950}/>
+          <Image src={images.devtoolsNetworkReqHeaders} width={950} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Network Pane 3 */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Ajax request in console.
           </Heading>
-          <Image src={images.consoleAJAX} width={950}/>
+          <Image src={images.consoleAJAX} width={950} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Setup devtools */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Turning that on.
           </Heading>
-          <Image src={images.setupDevtools} width={950}/>
+          <Image src={images.setupDevtools} width={950} />
+        </Slide>
+        <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Questions */}
+          <Heading size={1} caps fit>
+            Mind Blown
+          </Heading>
+          <Image src={images.questions} width={400} />
+          <Heading size={1} textColor="quartenary" caps fit>
+            Questions ?
+          </Heading>
         </Slide>
       </Deck>
     );

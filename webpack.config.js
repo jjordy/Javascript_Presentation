@@ -7,7 +7,6 @@ module.exports = {
   devtool: "eval",
   entry: [
     "webpack-hot-middleware/client",
-    "babel-polyfill",
     "./index"
   ],
   output: {
