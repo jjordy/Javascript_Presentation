@@ -1,0 +1,24 @@
+import React, { PropTypes } from 'react'
+import moment from 'moment'
+
+const PrettifyDate = (props) => {
+  const { date } = props
+  const prettyDate = moment(date, 'YYYY-MM-DD').format('MM-DD-YYYY')
+  const validDate = moment(prettyDate, 'MM-DD-YYYY').isValid()
+  return (
+    <span className='pretty-grid-date-container'>
+      {validDate ? prettyDate : 'N/A'}
+    </span>
+  )
+}
+
+PrettifyDate.propTypes = {
+  date: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.object
+  ])
+}
+PrettifyDate.displayName = 'PrettifyDate'
+
+export default PrettifyDate

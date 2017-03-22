@@ -1,0 +1,15 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+
+const Heading = ({ size, title }) => (
+  <h1 style={{fontSize: size}}>{title}</h1>
+)
+
+const App = ({}) => (
+  <div>
+    <Heading size={24} title='Hello' />
+  </div>
+)
+
+ReactDOM.render(<App />, document.getElementById('root'))

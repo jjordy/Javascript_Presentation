@@ -1,0 +1,10 @@
+import React from 'react'
+
+const SomeOtherComponent = ({date}) => (
+  <div>
+    <h1>{title}</h1>
+    My Birthday was: <PrettifyDate date={date} />
+  </div>
+)
+
+export default SomeOtherComponent
