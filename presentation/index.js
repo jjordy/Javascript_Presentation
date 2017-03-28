@@ -118,25 +118,17 @@ export default class Presentation extends React.Component {
             <ListItem textSize="2.0rem">Using the browser tools to find errors and debug web applications</ListItem>
           </List>
         </Slide>
-        <Slide transition={['fade']} bgColor="primary" textColor="tertiary"> {/* Legend 2 */}
-          <Heading size={6} textColor="secondary" caps>What well go over in Hour 2 (Advanced)</Heading>
-          <List>
-            <ListItem>Web Application deployment</ListItem>
-            <ListItem>Application Monitoring & Process management</ListItem>
-            <ListItem>Docker</ListItem>
-          </List>
-        </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="tertiary"> {/* Anatomy 1 */}
           <Heading size={6} textColor="quartenary" caps>Anatomy of a request</Heading>
           <Appear fid="1">
             <List>
-              <ListItem textSize="1.5rem">You go to your browser</ListItem>
-              <ListItem textSize="1.5rem">You type in an address</ListItem>
-              <ListItem textSize="1.5rem">The browser creates a request which goes to a Domain Name Server</ListItem>
-              <ListItem textSize="1.5rem">The Domain name server converts your requested url into a Number (IP Address)</ListItem>
-              <ListItem textSize="1.5rem">Your request arrives at the server</ListItem>
-              <ListItem textSize="1.5rem">The server processes your request and returns the page</ListItem>
-              <ListItem textSize="1.5rem">You proceed to browse facebook.</ListItem>
+              <ListItem>You go to your browser</ListItem>
+              <ListItem>You type in an address</ListItem>
+              <ListItem>The browser creates a request which goes to a Domain Name Server</ListItem>
+              <ListItem>The Domain name server converts your requested url into a Number (IP Address)</ListItem>
+              <ListItem>Your request arrives at the server</ListItem>
+              <ListItem>The server processes your request and returns the page</ListItem>
+              <ListItem>You proceed to browse facebook.</ListItem>
             </List>
           </Appear>
         </Slide>
@@ -157,9 +149,6 @@ export default class Presentation extends React.Component {
         <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Static Web Server */}
           <Heading caps>Static Web Server</Heading>
           <Text fit textColor='primary'>Is only concerned with serving a folder of files to the internet aka a Virtual Directory</Text>
-          <Divider />
-          <Text fit textColor='primary'>There is a convention in HTTP protocol
-          that says if an <S type='underline'>index.html</S> file exist in a static virtual directory you can serve that as the root of the directory.</Text>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Static Server Examples */}
           <Heading caps>Static Examples</Heading>
@@ -231,11 +220,10 @@ export default class Presentation extends React.Component {
             <Appear fid="2">
               <ListItem textColor="primary">We want to allow complex actions</ListItem>
             </Appear>
-            <Appear fid="2">
+            <Appear fid="3">
               <ListItem textColor="primary">A good user experience is converting complex actions into a simple interface.</ListItem>
             </Appear>
           </List>
-
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Non JS Form */}
           <Heading size={1} caps fit>
@@ -247,7 +235,7 @@ export default class Presentation extends React.Component {
           <Heading size={1} caps fit>
             Good User Experience
           </Heading>
-          <Image src={images.dynamicSiteFormSubmittal} width={600} />
+          <Image src={images.dynamicSiteFormSubmittal} width={400} />
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Questions */}
           <Heading size={1} caps fit>
@@ -302,29 +290,22 @@ export default class Presentation extends React.Component {
         <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Client Side Route */}
           <Heading fit caps textColor="tertiary">Routing</Heading>
           <Appear fid="1">
-            <Heading caps textColor="primary" fit>Client Side</Heading>
+            <Heading caps textColor="primary">Client Side</Heading>
           </Appear>
           <Appear fid="2">
             <div>
-              <Text fit textColor="quartenary">Routes are loaded when the application is first loaded in the browser.
-                Therefore routing is instant
-              </Text>
-              <Image src={images.bundle} width="100%" />
+              <Image src={images.clientSideIndex} width={750} />
             </div>
           </Appear>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Client Side Routing note */}
+          <Heading caps textColor="primary" fit>Client Side</Heading>
+          <Text fit textColor="quartenary">Because we already loaded all the routes when the page loaded. We
+            dont need to go back to the server to find out if a route exist. What that means is when a user goes through your application
+            they have a much more seamless experience browsing from page to page.
+          </Text>
           <Appear fid="1">
-            <Heading caps textColor="primary" fit>Client Side</Heading>
-          </Appear>
-          <Appear fid="2">
-            <Text fit textColor="quartenary">Because we already loaded all the routes when the page loaded. We
-              dont need to go back to the server to find out if a route exist. What that means is when a user goes through your application
-              they have a much more seamless experience browsing from page to page.
-            </Text>
-          </Appear>
-          <Appear fid="3">
-            <Image src={images.clientSideIndex} width={850} />
+            <Image src={images.bundle} width="100%" />
           </Appear>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary" textColor="primary"> {/* Data Fetching Client Side */}
@@ -669,7 +650,6 @@ export default class Presentation extends React.Component {
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
             Debugging web applications Using chrome dev tools.
           </Heading>
-          <Text fit textColor="tertiary">These examples will use chrome dev tools</Text>
         </Slide>
         <Slide transition={['fade']} bgColor="secondary"> {/* Accessing the devtools */}
           <Heading size={1} fit caps lineHeight={1} textColor="#FFF">
